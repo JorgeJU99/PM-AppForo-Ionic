@@ -1,0 +1,7 @@
+{
+  "name": "PM-AppForo-Ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
