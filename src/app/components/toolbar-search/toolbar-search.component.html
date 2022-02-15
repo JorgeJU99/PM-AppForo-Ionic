@@ -1,0 +1,15 @@
+<section>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button autoHide="true" menu="main-menu"></ion-menu-button>
+		</ion-buttons>
+		<ion-searchbar
+			#busqueda
+			show-cancel-button="focus"
+			cancel-button-text="Custom Cancel"
+			searchIcon="search-sharp"
+			(keyup.enter)="search(busqueda.value)"
+			animated
+		></ion-searchbar>
+	</ion-toolbar>
+</section>

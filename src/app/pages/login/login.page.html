@@ -24,7 +24,7 @@
 							<ion-row>
 								<ion-col size="12">
 									<ion-item>
-										<ion-label position="floating">
+										<ion-label position="floating" class="ion-text-wrap">
 											<ion-icon name="at"></ion-icon>
 											&nbsp;Usuario</ion-label
 										>
@@ -45,7 +45,7 @@
 								</ion-col>
 								<ion-col size="12">
 									<ion-item>
-										<ion-label position="floating">
+										<ion-label position="floating" class="ion-text-wrap">
 											<ion-icon name="lock-closed"></ion-icon>
 											&nbsp;Contraseña</ion-label
 										>
@@ -92,9 +92,9 @@
 					<form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)">
 						<ion-grid fixed>
 							<ion-row>
-								<ion-col size="6">
+								<ion-col size="12" size-sm="6">
 									<ion-item>
-										<ion-label position="floating">
+										<ion-label position="floating" class="ion-text-wrap">
 											<ion-icon name="id-card-sharp"></ion-icon>
 											&nbsp;Nombre</ion-label
 										>
@@ -113,7 +113,7 @@
 										></ion-input>
 									</ion-item>
 								</ion-col>
-								<ion-col size="6">
+								<ion-col size="12" size-sm="6">
 									<ion-item>
 										<ion-label position="floating">
 											<ion-icon name="id-card-sharp"></ion-icon>

@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 	@Input() titulo: string;
-	@Input() route: string;
 
 	constructor() {}
 

@@ -1,0 +1,15 @@
+.ion-color-tertiary {
+	--ion-color-base: var(--ion-color-tertiary, #059cd8) !important;
+}
+
+.ion-color-foro {
+	--ion-color-base: var(--ion-color-tertiary, #007bee) !important;
+}
+
+.ion-color-tertiary {
+	--ion-color-base: var(--ion-color-tertiary, white) !important;
+	--ion-color-contrast: var(--ion-color-tertiary-contrast, #059cd8) !important;
+	--ion-color-contrast-rgb: var(--ion-color-tertiary-contrast-rgb, #059cd8) !important;
+	--ion-color-shade: var(--ion-color-tertiary-shade, #059cd8) !important;
+	--ion-color-tint: var(--ion-color-tertiary-tint, #059cd8) !important;
+}
