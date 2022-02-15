@@ -1,0 +1,218 @@
+<ion-header>
+	<app-toolbar titulo="App Ionic-Foro"></app-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" fullscreen>
+	<ion-segment (ionChange)="segmentChange($event)" [value]="valueSelected" color="tertiary">
+		<ion-segment-button value="login">
+			<ion-label>Login</ion-label>
+		</ion-segment-button>
+		<ion-segment-button value="register">
+			<ion-label>Registrarse</ion-label>
+		</ion-segment-button>
+	</ion-segment>
+
+	<section *ngIf="valueSelected === 'login'" class="ion-padding">
+		<ion-card>
+			<ion-card-header>
+				<ion-img src="../../../assets/logo/foro.png" style="height: 10em"></ion-img>
+			</ion-card-header>
+			<ion-card-content>
+				<div class="ion-padding">
+					<form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+						<ion-grid fixed>
+							<ion-row>
+								<ion-col size="12">
+									<ion-item>
+										<ion-label position="floating">
+											<ion-icon name="at"></ion-icon>
+											&nbsp;Usuario</ion-label
+										>
+										<ion-input
+											class="input"
+											type="text"
+											[(ngModel)]="login.username"
+											name="username"
+											#username="ngModel"
+											[ngClass]="{
+                        'is-invalid': username.invalid && (username.dirty || username.touched),
+                        'is-valid': username.valid
+                      }"
+											minlength="5"
+											required
+										></ion-input>
+									</ion-item>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item>
+										<ion-label position="floating">
+											<ion-icon name="lock-closed"></ion-icon>
+											&nbsp;Contraseña</ion-label
+										>
+										<ion-input
+											class="input"
+											type="password"
+											[(ngModel)]="login.userpassword"
+											name="userpassword"
+											#userpassword="ngModel"
+											[ngClass]="{
+                        'is-invalid': userpassword.invalid && (userpassword.dirty || userpassword.touched),
+                        'is-valid': userpassword.valid
+                      }"
+											minlength="8"
+											required
+										></ion-input>
+									</ion-item>
+								</ion-col>
+								<ion-col>
+									<ion-button
+										type="submit"
+										expand="block"
+										color="foro"
+										[disabled]="loginForm.invalid"
+									>
+										Iniciar Sesion
+									</ion-button>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+					</form>
+				</div></ion-card-content
+			>
+		</ion-card>
+	</section>
+
+	<section *ngIf="valueSelected === 'register'" class="ion-padding">
+		<ion-card>
+			<ion-card-header>
+				<ion-img src="../../../assets/logo/foro.png" style="height: 10em"></ion-img>
+			</ion-card-header>
+			<ion-card-content>
+				<div class="ion-padding">
+					<form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)">
+						<ion-grid fixed>
+							<ion-row>
+								<ion-col size="6">
+									<ion-item>
+										<ion-label position="floating">
+											<ion-icon name="id-card-sharp"></ion-icon>
+											&nbsp;Nombre</ion-label
+										>
+										<ion-input
+											class="input"
+											type="password"
+											[(ngModel)]="usuario.nombre"
+											name="nombre"
+											#nombre="ngModel"
+											[ngClass]="{
+                        'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
+                        'is-valid': nombre.valid
+                      }"
+											minlength="5"
+											required
+										></ion-input>
+									</ion-item>
+								</ion-col>
+								<ion-col size="6">
+									<ion-item>
+										<ion-label position="floating">
+											<ion-icon name="id-card-sharp"></ion-icon>
+											&nbsp;Apellido</ion-label
+										>
+										<ion-input
+											class="input"
+											type="password"
+											[(ngModel)]="usuario.apellido"
+											name="apellido"
+											#apellido="ngModel"
+											minlength="8"
+											[ngClass]="{
+                        'is-invalid': apellido.invalid && (apellido.dirty || apellido.touched),
+                        'is-valid': apellido.valid
+                      }"
+											minlength="5"
+											required
+										></ion-input>
+									</ion-item>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item>
+										<ion-label position="floating">
+											<ion-icon name="at"></ion-icon>
+											&nbsp;Usuario</ion-label
+										>
+										<ion-input
+											class="input"
+											type="text"
+											[(ngModel)]="usuario.username"
+											name="username"
+											#username="ngModel"
+											[ngClass]="{
+                        'is-invalid': username.invalid && (username.dirty || username.touched),
+                        'is-valid': username.valid
+                      }"
+											minlength="5"
+											required
+										></ion-input>
+									</ion-item>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item>
+										<ion-label position="floating">
+											<ion-icon name="lock-closed"></ion-icon>
+											&nbsp;Contraseña</ion-label
+										>
+										<ion-input
+											class="input"
+											type="password"
+											[(ngModel)]="usuario.userpassword"
+											name="userpassword"
+											#userpassword="ngModel"
+											minlength="8"
+											[ngClass]="{
+                        'is-invalid': userpassword.invalid && (userpassword.dirty || userpassword.touched),
+                        'is-valid': userpassword.valid
+                      }"
+											required
+										></ion-input>
+									</ion-item>
+								</ion-col>
+								<ion-col size="12">
+									<ion-item>
+										<ion-label position="floating">
+											<ion-icon name="image"></ion-icon>
+											&nbsp;Foto</ion-label
+										>
+										<ion-input
+											class="input"
+											type="password"
+											[(ngModel)]="usuario.foto"
+											name="foto"
+											#foto="ngModel"
+											minlength="8"
+											[ngClass]="{
+                        'is-invalid': foto.invalid && (foto.dirty || foto.touched),
+                        'is-valid': foto.valid
+                      }"
+											required
+										></ion-input>
+									</ion-item>
+								</ion-col>
+								<ion-col>
+									<ion-button
+										type="submit"
+										expand="block"
+										color="foro"
+										[disabled]="registerForm.invalid"
+									>
+										Registrarse
+									</ion-button>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+					</form>
+				</div></ion-card-content
+			>
+		</ion-card>
+	</section>
+</ion-content>
