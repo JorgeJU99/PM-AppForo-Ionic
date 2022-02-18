@@ -18,6 +18,7 @@ export class PublicacionesPage implements OnInit {
 	usuarioLogin: any = [];
 	publicaciones: any = [];
 	publicacionUsuario: any = [];
+	textSearch = '';
 
 	constructor(
 		private apiService: ApiService,
@@ -28,6 +29,10 @@ export class PublicacionesPage implements OnInit {
 	ngOnInit() {
 		this.getUsuario();
 		this.getPublicaciones();
+	}
+
+	filter(event) {
+		this.textSearch = event.detail.value;
 	}
 
 	getUsuario() {

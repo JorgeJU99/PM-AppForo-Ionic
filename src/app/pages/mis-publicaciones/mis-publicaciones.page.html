@@ -1,11 +1,24 @@
 <ion-header>
 	<app-toolbar titulo="Mis publicaciones"></app-toolbar>
-	<app-toolbar-search></app-toolbar-search>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button autoHide="true" menu="main-menu"></ion-menu-button>
+		</ion-buttons>
+		<ion-searchbar
+			#busqueda
+			show-cancel-button="focus"
+			cancel-button-text="Custom Cancel"
+			searchIcon="search-sharp"
+			placeholder="Buscar"
+			animated
+			(ionChange)="filter($event)"
+		></ion-searchbar>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
 	<ion-card
-		*ngFor="let publicacion of publicaciones"
+		*ngFor="let publicacion of publicaciones  | filtro: textSearch"
 		class="card-border"
 		(click)="publicacionActionSheet(publicacion)"
 	>

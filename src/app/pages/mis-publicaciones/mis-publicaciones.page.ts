@@ -13,6 +13,7 @@ import { ModalPublicacionesComponent } from './components/modal-publicaciones/mo
 export class MisPublicacionesPage implements OnInit {
 	usuarioLogin: any = [];
 	publicaciones: any = [];
+	textSearch = '';
 
 	constructor(
 		private apiService: ApiService,
@@ -24,6 +25,10 @@ export class MisPublicacionesPage implements OnInit {
 	ngOnInit() {
 		this.getUsuario();
 		this.getPublicaciones();
+	}
+
+	filter(event) {
+		this.textSearch = event.detail.value;
 	}
 
 	getUsuario() {
