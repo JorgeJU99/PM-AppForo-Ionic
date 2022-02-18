@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { ModalController } from '@ionic/angular';
@@ -21,6 +22,7 @@ export class PublicacionesPage implements OnInit {
 	textSearch = '';
 
 	constructor(
+		private router: Router,
 		private apiService: ApiService,
 		private toastService: ToastService,
 		private modalController: ModalController
@@ -66,6 +68,10 @@ export class PublicacionesPage implements OnInit {
 			this.getPublicaciones();
 		});
 		return await modal.present();
+	}
+
+	watchComentarios(id) {
+		this.router.navigate(['/app/home/publicaciones/comentarios/', id]);
 	}
 
 	ionViewWillEnter() {

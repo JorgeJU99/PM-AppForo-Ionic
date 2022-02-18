@@ -1,0 +1,51 @@
+<section>
+	<ion-header translucent>
+		<ion-toolbar>
+			<ion-title>Comentar</ion-title>
+			<ion-buttons slot="end">
+				<ion-button (click)="dismissModal()">Cancelar</ion-button>
+			</ion-buttons>
+		</ion-toolbar>
+	</ion-header>
+
+	<ion-content fullscreen>
+		<form #comentarioForm="ngForm" (ngSubmit)="registerComentario(comentarioForm)">
+			<ion-grid fixed>
+				<ion-row>
+					<ion-col size="12" size-sm="6">
+						<ion-item>
+							<ion-label position="floating" class="ion-text-wrap">
+								&nbsp;Comentario:</ion-label
+							>
+							<ion-textarea
+								class="input"
+								type="text"
+								[(ngModel)]="comentarios.comentario"
+								name="comentario"
+								#comentario="ngModel"
+								[ngClass]="{
+									'is-invalid':
+										comentario.invalid &&
+										(comentario.dirty || comentario.touched),
+									'is-valid': comentario.valid
+								}"
+								rows="4"
+								required
+							></ion-textarea>
+						</ion-item>
+					</ion-col>
+					<ion-col>
+						<ion-button
+							type="submit"
+							expand="block"
+							color="foro"
+							[disabled]="comentarioForm.invalid"
+						>
+							Comentar
+						</ion-button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</form>
+	</ion-content>
+</section>

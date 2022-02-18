@@ -1,0 +1,71 @@
+<ion-header *ngFor="let publicacion of publicacion">
+	<app-toolbar-router
+		titulo="{{publicacion.titulo}}"
+		route="/app/home/publicaciones"
+	></app-toolbar-router>
+</ion-header>
+
+<ion-content fullscreen>
+	<ion-card *ngFor="let publicacion of publicacion" class="card-border">
+		<ion-card-header>
+			<div class="div-flex">
+				<ion-avatar>
+					<img [src]="publicacion.fotousuario" />
+				</ion-avatar>
+				<ion-label class="ion-padding-start">
+					<h2>@{{publicacion.username}}</h2>
+					<h3>{{publicacion.nombre}} {{publicacion.apellido}}</h3>
+					<p>{{publicacion.fecha | date}}</p>
+				</ion-label>
+			</div>
+			<ion-card-title><h1>{{publicacion.titulo}}</h1></ion-card-title>
+			<ion-img [src]="publicacion.fotopublicacion"></ion-img>
+		</ion-card-header>
+		<ion-card-content>
+			<section>
+				<ion-text><p class="text-justify">{{publicacion.mensaje}}</p></ion-text>
+			</section>
+			<hr />
+			<section>
+				<h2 class="text-bold">Comentarios</h2>
+				<div *ngFor="let comentario of comentarios" class="div-comentario">
+					<ion-grid fixed>
+						<ion-row>
+							<ion-col size="2">
+								<div class="ion-padding-top">
+									<ion-avatar class="ion-avatar-comentario">
+										<img [src]="comentario.fotousuario" />
+									</ion-avatar>
+								</div>
+							</ion-col>
+							<ion-col size="10">
+								<ion-label>
+									<div class="div-content">
+										<h4 class="text-bold-700">@{{comentario.username}}</h4>
+										<h4 class="text-bold-600">
+											{{comentario.nombre}} {{comentario.apellido}}
+										</h4>
+										<div class="div-ion-padding-top">
+											<ion-text> {{comentario.comentario}} </ion-text>
+										</div>
+									</div>
+									<div class="div-ion-padding-top-fecha">
+										<small>{{comentario.fecha | date}}</small>
+									</div>
+								</ion-label>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</div>
+			</section>
+			<hr />
+			<section class="section-comentar">
+				<div class="div-comentar">
+					<div class="div-border" (click)="modalComentario(publicacion.idpublicacion)">
+						<ion-text> Comentar </ion-text>
+					</div>
+				</div>
+			</section>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

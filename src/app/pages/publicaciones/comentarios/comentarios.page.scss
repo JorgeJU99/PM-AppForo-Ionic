@@ -1,0 +1,88 @@
+.div-flex {
+	display: flex;
+	align-items: center;
+}
+
+.text-justify {
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+ion-content {
+	ion-card {
+		ion-card-header {
+			div {
+				ion-avatar {
+					width: auto;
+					height: auto;
+					img {
+						width: 3.5rem;
+						height: 3.5rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+.card-border {
+	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.div-comentario {
+	.ion-avatar-comentario {
+		height: 2.7em;
+		width: 2.7em;
+	}
+	ion-label {
+		.div-content {
+			padding: 1em;
+			height: auto;
+			border-radius: 15px;
+			width: auto;
+			box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+				rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+			ion-text {
+				color: black;
+				opacity: 0.6;
+			}
+		}
+	}
+}
+
+.section-comentar {
+	width: 100%;
+	.div-comentar {
+		.div-border {
+			padding: 0.5em;
+			padding-left: 15px;
+			border-radius: 15px;
+			box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+				rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+			ion-text {
+				color: black;
+				opacity: 0.6;
+			}
+		}
+	}
+}
+.div-ion-padding-top {
+	padding-top: 5px;
+}
+
+.div-ion-padding-top-fecha {
+	padding-top: 5px;
+	padding-left: 10px;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-bold-700 {
+	font-weight: 700;
+}
+
+.text-bold-600 {
+	font-weight: 550;
+}

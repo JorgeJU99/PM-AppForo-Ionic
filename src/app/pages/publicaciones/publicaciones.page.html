@@ -30,7 +30,10 @@
 </section>
 
 <ion-content fullscreen>
-	<ion-card *ngFor="let publicacion of publicaciones | filtro: textSearch" class="card-border">
+	<ion-card
+		*ngFor="let publicacion of publicaciones | filtro: textSearch; let index = index"
+		class="card-border"
+	>
 		<ion-card-header>
 			<div class="div-flex">
 				<ion-avatar>
@@ -46,7 +49,18 @@
 			<ion-img [src]="publicacion.fotopublicacion"></ion-img>
 		</ion-card-header>
 		<ion-card-content>
-			<ion-text><p class="text-justify">{{publicacion.mensaje}}</p></ion-text>
+			<section>
+				<ion-text><p class="text-justify">{{publicacion.mensaje}}</p></ion-text>
+			</section>
+			<section class="btn-comentarios">
+				<ion-button
+					size="small"
+					color="foro"
+					(click)="watchComentarios(publicacion.idpublicacion)"
+				>
+					Ver comentarios<ion-icon name="eye"></ion-icon>
+				</ion-button>
+			</section>
 		</ion-card-content>
 	</ion-card>
 </ion-content>

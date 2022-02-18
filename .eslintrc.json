@@ -17,6 +17,7 @@
 				"space-before-function-paren": "off",
 				"prefer-arrow/prefer-arrow-functions": "off",
 				"arrow-body-style": "off",
+				"@typescript-eslint/prefer-for-of": "off",
 				"@angular-eslint/component-class-suffix": [
 					"error",
 					{
