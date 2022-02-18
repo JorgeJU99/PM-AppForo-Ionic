@@ -168,11 +168,11 @@
 											[(ngModel)]="usuario.userpassword"
 											name="userpassword"
 											#userpassword="ngModel"
-											minlength="8"
 											[ngClass]="{
                         'is-invalid': userpassword.invalid && (userpassword.dirty || userpassword.touched),
                         'is-valid': userpassword.valid
                       }"
+											minlength="8"
 											required
 										></ion-input>
 									</ion-item>
@@ -183,19 +183,19 @@
 											<ion-icon name="image"></ion-icon>
 											&nbsp;Foto</ion-label
 										>
-										<ion-input
+										<ion-textarea
 											class="input"
 											type="password"
 											[(ngModel)]="usuario.foto"
 											name="foto"
 											#foto="ngModel"
-											minlength="8"
 											[ngClass]="{
                         'is-invalid': foto.invalid && (foto.dirty || foto.touched),
                         'is-valid': foto.valid
                       }"
+											rows="2"
 											required
-										></ion-input>
+										></ion-textarea>
 									</ion-item>
 								</ion-col>
 								<ion-col>

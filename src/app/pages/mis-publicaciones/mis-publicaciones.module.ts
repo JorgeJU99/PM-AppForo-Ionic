@@ -9,6 +9,7 @@ import { MisPublicacionesPageRoutingModule } from './mis-publicaciones-routing.m
 import { MisPublicacionesPage } from './mis-publicaciones.page';
 import { ToolbarModule } from 'src/app/components/toolbar/toolbar.module';
 import { ToolbarSearchModule } from 'src/app/components/toolbar-search/toolbar-search.module';
+import { ModalPublicacionesModule } from './components/modal-publicaciones/modal-publicaciones.module';
 
 @NgModule({
 	imports: [
@@ -18,6 +19,7 @@ import { ToolbarSearchModule } from 'src/app/components/toolbar-search/toolbar-s
 		MisPublicacionesPageRoutingModule,
 		ToolbarModule,
 		ToolbarSearchModule,
+		ModalPublicacionesModule,
 	],
 	declarations: [MisPublicacionesPage],
 })

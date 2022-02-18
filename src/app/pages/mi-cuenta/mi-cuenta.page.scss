@@ -19,11 +19,14 @@ hr {
 	visibility: visible !important;
 }
 
-.align-avatar {
+ion-avatar {
+	width: auto;
+	height: 50%;
 	display: flex;
 	justify-content: center;
-	ion-img {
-		height: 75px;
-		width: 75px;
+	img {
+		width: 8rem;
+		height: 8rem;
+		margin: auto;
 	}
 }

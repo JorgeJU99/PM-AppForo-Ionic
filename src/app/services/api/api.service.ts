@@ -29,11 +29,7 @@ export class ApiService {
 	}
 
 	save(path: any, data: any) {
-		return this.http.post<any>(this.url + path, data).pipe(
-			tap(() => {
-				this.refresh.next();
-			})
-		);
+		return this.http.post<any>(this.url + path, data);
 	}
 
 	update(path: any, data: any) {

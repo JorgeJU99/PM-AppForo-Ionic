@@ -1,0 +1,28 @@
+ion-searchbar {
+	.searchbar-input-container {
+		.searchbar-input {
+			border-radius: 30px !important;
+		}
+	}
+}
+
+hr {
+	background: rgb(219, 218, 218) !important;
+	width: 100% !important;
+	visibility: visible !important;
+}
+
+.color-foro {
+	--color: white;
+	--background: #007bee;
+}
+
+.ion-color-foro {
+	--ion-color-base: #007bee !important;
+	--ion-color-contrast: white !important;
+}
+
+.ion-color-foro-light {
+	--ion-color-base: #1085f1 !important;
+	--ion-color-contrast: white !important;
+}

@@ -3,4 +3,28 @@
 	<app-toolbar-search></app-toolbar-search>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content fullscreen>
+	<ion-card
+		*ngFor="let publicacion of publicaciones"
+		class="card-border"
+		(click)="publicacionActionSheet(publicacion)"
+	>
+		<ion-card-header>
+			<div class="div-flex">
+				<ion-avatar>
+					<img [src]="publicacion.fotousuario" />
+				</ion-avatar>
+				<ion-label class="ion-padding-start">
+					<h2>@{{publicacion.username}}</h2>
+					<h3>{{publicacion.nombre}} {{publicacion.apellido}}</h3>
+					<p>{{publicacion.fecha | date}}</p>
+				</ion-label>
+			</div>
+			<ion-card-title><h1>{{publicacion.titulo}}</h1></ion-card-title>
+			<ion-img [src]="publicacion.fotopublicacion"></ion-img>
+		</ion-card-header>
+		<ion-card-content>
+			<ion-text><p class="text-justify">{{publicacion.mensaje}}</p></ion-text>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
