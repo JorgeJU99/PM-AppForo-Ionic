@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { ActionSheetController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { ModalRegistrarComentarioComponent } from './components/modal-registrar-comentario/modal-registrar-comentario.component';
+import { ModalActualizarComentarioComponent } from './components/modal-actualizar-comentario/modal-actualizar-comentario.component';
 
 @Component({
 	selector: 'app-comentarios',
@@ -14,11 +16,13 @@ export class ComentariosPage implements OnInit {
 	usuario: any = [];
 	publicacion: any = [];
 	comentarios: any = [];
+	comentario: any = [];
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
 		private apiService: ApiService,
 		private toastService: ToastService,
+		private actionSheetController: ActionSheetController,
 		private modalController: ModalController
 	) {}
 
@@ -67,7 +71,7 @@ export class ComentariosPage implements OnInit {
 		);
 	}
 
-	async modalComentario(id) {
+	async modalComentarioCreate(id) {
 		const modal = await this.modalController.create({
 			component: ModalRegistrarComentarioComponent,
 			initialBreakpoint: 0.5,
@@ -81,5 +85,71 @@ export class ComentariosPage implements OnInit {
 			this.getPublicacion();
 		});
 		return await modal.present();
+	}
+
+	async modalComentarioUpdate(id) {
+		const modal = await this.modalController.create({
+			component: ModalActualizarComentarioComponent,
+			initialBreakpoint: 0.5,
+			breakpoints: [0, 0.5, 1],
+			componentProps: {
+				idUsuario: this.usuario.id,
+				idComentario: id,
+			},
+		});
+		modal.onDidDismiss().then(() => {
+			this.getPublicacion();
+		});
+		return await modal.present();
+	}
+
+	deleteComentario(id) {
+		this.apiService.delete('comentarios', id).subscribe(
+			(response) => {
+				if (response.estado === true) {
+					this.toastService.successToast(response.message);
+					this.getPublicacion();
+				}
+				if (response.estado === false) {
+					this.toastService.errorToast(response.message);
+				}
+			},
+			(error) => {
+				this.toastService.errorToast(error.error.message);
+			}
+		);
+	}
+
+	async comentarioActionSheet(comentario) {
+		const actionSheet = await this.actionSheetController.create({
+			header: 'Comentario',
+			animated: true,
+			backdropDismiss: true,
+			keyboardClose: false,
+			buttons: [
+				{
+					text: 'Eliminar',
+					role: 'destructive',
+					icon: 'trash',
+					handler: () => {
+						this.deleteComentario(comentario.idcomentario);
+					},
+				},
+				{
+					text: 'Editar',
+					icon: 'create',
+					handler: () => {
+						this.modalComentarioUpdate(comentario.idcomentario);
+					},
+				},
+
+				{
+					text: 'Cancelar',
+					icon: 'arrow-undo',
+					role: 'cancel',
+				},
+			],
+		});
+		await actionSheet.present();
 	}
 }

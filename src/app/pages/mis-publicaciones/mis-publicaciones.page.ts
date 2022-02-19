@@ -51,8 +51,6 @@ export class MisPublicacionesPage implements OnInit {
 		);
 	}
 
-	updatePublicacion(id) {}
-
 	deletePublicacion(id) {
 		this.apiService.delete('publicaciones', id).subscribe(
 			(response) => {

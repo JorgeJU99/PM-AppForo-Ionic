@@ -9,67 +9,27 @@
 	</ion-header>
 
 	<ion-content fullscreen>
-		<!-- 	<form #publicacionForm="ngForm" (ngSubmit)="registerPublicacion(publicacionForm)">
+		<form #comentarioForm="ngForm" (ngSubmit)="updateComentario(comentarioForm)">
 			<ion-grid fixed>
 				<ion-row>
-					<ion-col size="12" size-sm="6">
+					<ion-col size="12">
 						<ion-item>
 							<ion-label position="floating" class="ion-text-wrap">
-								&nbsp;Tema:</ion-label
-							>
-							<ion-input
-								class="input"
-								type="text"
-								[(ngModel)]="publicacion.titulo"
-								name="titulo"
-								#titulo="ngModel"
-								[ngClass]="{
-									'is-invalid':
-										titulo.invalid && (titulo.dirty || titulo.touched),
-									'is-valid': titulo.valid
-								}"
-								required
-							></ion-input>
-						</ion-item>
-					</ion-col>
-					<ion-col size="12" size-sm="6">
-						<ion-item>
-							<ion-label position="floating" class="ion-text-wrap">
-								&nbsp;Imagen:</ion-label
+								&nbsp;Comentario:</ion-label
 							>
 							<ion-textarea
 								class="input"
 								type="text"
-								[(ngModel)]="publicacion.foto"
-								name="foto"
-								#foto="ngModel"
-								[ngClass]="{
-									'is-invalid': foto.invalid && (foto.dirty || foto.touched),
-									'is-valid': foto.valid
-								}"
-								rows="2"
-								required
-							></ion-textarea>
-						</ion-item>
-					</ion-col>
-					<ion-col size="12" size-sm="6">
-						<ion-item>
-							<ion-label position="floating" class="ion-text-wrap">
-								&nbsp;Contenido:</ion-label
-							>
-							<ion-textarea
-								class="input"
-								type="text"
-								[(ngModel)]="publicacion.mensaje"
-								name="mensaje"
-								#mensaje="ngModel"
+								[(ngModel)]="comentarios.comentario"
+								name="comentario"
+								#comentario="ngModel"
 								[ngClass]="{
 									'is-invalid':
-										mensaje.invalid && (mensaje.dirty || mensaje.touched),
-									'is-valid': mensaje.valid
+										comentario.invalid &&
+										(comentario.dirty || comentario.touched),
+									'is-valid': comentario.valid
 								}"
 								rows="4"
-								minlength="8"
 								required
 							></ion-textarea>
 						</ion-item>
@@ -79,13 +39,13 @@
 							type="submit"
 							expand="block"
 							color="foro"
-							[disabled]="publicacionForm.invalid"
+							[disabled]="comentarioForm.invalid"
 						>
-							Publicar
+							Comentar
 						</ion-button>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
-		</form> -->
+		</form>
 	</ion-content>
 </section>

@@ -86,3 +86,14 @@ ion-content {
 .text-bold-600 {
 	font-weight: 550;
 }
+
+.btn-editar {
+	display: flex;
+	justify-content: end;
+	padding-right: 10px;
+	ion-button {
+		width: 40px !important;
+		height: 12px !important;
+		box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+	}
+}

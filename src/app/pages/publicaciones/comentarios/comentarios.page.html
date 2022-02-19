@@ -50,7 +50,26 @@
 										</div>
 									</div>
 									<div class="div-ion-padding-top-fecha">
-										<small>{{comentario.fecha | date}}</small>
+										<ion-row>
+											<ion-col>
+												<small>{{comentario.fecha | date}}</small>
+											</ion-col>
+											<ion-col
+												class="btn-editar"
+												*ngIf="comentario.idusuario === usuario.id"
+											>
+												<ion-button
+													size="small"
+													color="light"
+													(click)="comentarioActionSheet(comentario)"
+												>
+													<ion-icon
+														slot="icon-only"
+														name="ellipsis-horizontal"
+													></ion-icon>
+												</ion-button>
+											</ion-col>
+										</ion-row>
 									</div>
 								</ion-label>
 							</ion-col>
@@ -61,7 +80,10 @@
 			<hr />
 			<section class="section-comentar">
 				<div class="div-comentar">
-					<div class="div-border" (click)="modalComentario(publicacion.idpublicacion)">
+					<div
+						class="div-border"
+						(click)="modalComentarioCreate(publicacion.idpublicacion)"
+					>
 						<ion-text> Comentar </ion-text>
 					</div>
 				</div>
