@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/api/auth.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
@@ -21,6 +22,7 @@ export class MiCuentaPage implements OnInit {
 
 	constructor(
 		private router: Router,
+		private alertController: AlertController,
 		private authService: AuthService,
 		private toastService: ToastService
 	) {}
@@ -44,6 +46,26 @@ export class MiCuentaPage implements OnInit {
 	cerrarSesion() {
 		this.toastService.successToast('Ha cerrado exitosamente la sesión.');
 		this.authService.cerrarSesion();
+	}
+
+	async sesionAlert() {
+		const alert = await this.alertController.create({
+			header: 'Cerrar sesión',
+			message: '¿Desea cerrar la sesión?',
+			buttons: [
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+				},
+				{
+					text: 'Ok',
+					handler: () => {
+						this.cerrarSesion();
+					},
+				},
+			],
+		});
+		await alert.present();
 	}
 
 	ionViewWillEnter() {

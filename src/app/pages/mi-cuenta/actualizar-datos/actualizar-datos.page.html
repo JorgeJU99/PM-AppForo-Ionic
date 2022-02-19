@@ -15,7 +15,7 @@
 	<section *ngIf="valueSelected === 'datos'">
 		<ion-card>
 			<ion-card-content>
-				<form #dataForm="ngForm" (ngSubmit)="updateDatos(dataForm)">
+				<form #dataForm="ngForm" (ngSubmit)="updateDatosAlert(dataForm)">
 					<ion-grid fixed>
 						<ion-row>
 							<ion-col size="12" size-sm="6">
@@ -123,7 +123,7 @@
 	<section *ngIf="valueSelected === 'contraseña'">
 		<ion-card>
 			<ion-card-content>
-				<form #passwordForm="ngForm" (ngSubmit)="updatePassword(passwordForm)">
+				<form #passwordForm="ngForm" (ngSubmit)="updatePasswordAlert(passwordForm)">
 					<ion-grid fixed>
 						<ion-row>
 							<ion-col size="12">

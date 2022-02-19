@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ActionSheetController, ModalController, AlertController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import { ActionSheetController } from '@ionic/angular';
-import { ModalController } from '@ionic/angular';
 import { ModalRegistrarComentarioComponent } from './components/modal-registrar-comentario/modal-registrar-comentario.component';
 import { ModalActualizarComentarioComponent } from './components/modal-actualizar-comentario/modal-actualizar-comentario.component';
 
@@ -20,10 +19,11 @@ export class ComentariosPage implements OnInit {
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
-		private apiService: ApiService,
-		private toastService: ToastService,
 		private actionSheetController: ActionSheetController,
-		private modalController: ModalController
+		private modalController: ModalController,
+		private alertController: AlertController,
+		private apiService: ApiService,
+		private toastService: ToastService
 	) {}
 
 	ngOnInit() {
@@ -120,6 +120,26 @@ export class ComentariosPage implements OnInit {
 		);
 	}
 
+	async deleteComentarioAlert(id) {
+		const alert = await this.alertController.create({
+			header: 'Eliminar comentario',
+			message: '¿Desea eliminar el comentario?',
+			buttons: [
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+				},
+				{
+					text: 'Ok',
+					handler: () => {
+						this.deleteComentario(id);
+					},
+				},
+			],
+		});
+		await alert.present();
+	}
+
 	async comentarioActionSheet(comentario) {
 		const actionSheet = await this.actionSheetController.create({
 			header: 'Comentario',
@@ -132,7 +152,7 @@ export class ComentariosPage implements OnInit {
 					role: 'destructive',
 					icon: 'trash',
 					handler: () => {
-						this.deleteComentario(comentario.idcomentario);
+						this.deleteComentarioAlert(comentario.idcomentario);
 					},
 				},
 				{
@@ -142,7 +162,6 @@ export class ComentariosPage implements OnInit {
 						this.modalComentarioUpdate(comentario.idcomentario);
 					},
 				},
-
 				{
 					text: 'Cancelar',
 					icon: 'arrow-undo',

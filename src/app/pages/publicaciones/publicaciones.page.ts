@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import { ModalController } from '@ionic/angular';
 import { ModalPublicacionesComponent } from './components/modal-publicaciones/modal-publicaciones.component';
 
 export class Usuario {
@@ -23,9 +23,9 @@ export class PublicacionesPage implements OnInit {
 
 	constructor(
 		private router: Router,
+		private modalController: ModalController,
 		private apiService: ApiService,
-		private toastService: ToastService,
-		private modalController: ModalController
+		private toastService: ToastService
 	) {}
 
 	ngOnInit() {
@@ -72,6 +72,15 @@ export class PublicacionesPage implements OnInit {
 
 	watchComentarios(id) {
 		this.router.navigate(['/app/home/publicaciones/comentarios/', id]);
+	}
+
+	doRefresh(event) {
+		console.log('Begin async operation');
+
+		setTimeout(() => {
+			console.log('Async operation has ended');
+			event.target.complete();
+		}, 2000);
 	}
 
 	ionViewWillEnter() {

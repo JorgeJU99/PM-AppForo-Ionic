@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
@@ -20,6 +20,7 @@ export class ModalActualizarComentarioComponent implements OnInit {
 
 	constructor(
 		private modalController: ModalController,
+		private alertController: AlertController,
 		private apiService: ApiService,
 		private toastService: ToastService
 	) {}
@@ -68,5 +69,25 @@ export class ModalActualizarComentarioComponent implements OnInit {
 				this.toastService.errorToast(error.error.message);
 			}
 		);
+	}
+
+	async updateComentarioAlert(form) {
+		const alert = await this.alertController.create({
+			header: 'Actualizar comentario',
+			message: '¿Desea actualizar el comentario?',
+			buttons: [
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+				},
+				{
+					text: 'Ok',
+					handler: () => {
+						this.updateComentario(form);
+					},
+				},
+			],
+		});
+		await alert.present();
 	}
 }

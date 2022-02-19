@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionSheetController, ModalController, AlertController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import { ActionSheetController } from '@ionic/angular';
-import { ModalController } from '@ionic/angular';
 import { ModalPublicacionesComponent } from './components/modal-publicaciones/modal-publicaciones.component';
 
 @Component({
@@ -16,10 +15,11 @@ export class MisPublicacionesPage implements OnInit {
 	textSearch = '';
 
 	constructor(
-		private apiService: ApiService,
-		private toastService: ToastService,
 		private actionSheetController: ActionSheetController,
-		private modalController: ModalController
+		private modalController: ModalController,
+		private alertController: AlertController,
+		private apiService: ApiService,
+		private toastService: ToastService
 	) {}
 
 	ngOnInit() {
@@ -68,6 +68,26 @@ export class MisPublicacionesPage implements OnInit {
 		);
 	}
 
+	async deletePublicacionAlert(id) {
+		const alert = await this.alertController.create({
+			header: 'Eliminar publicación',
+			message: '¿Desea eliminar la publicación?',
+			buttons: [
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+				},
+				{
+					text: 'Ok',
+					handler: () => {
+						this.deletePublicacion(id);
+					},
+				},
+			],
+		});
+		await alert.present();
+	}
+
 	async publicacionActionSheet(publicacion) {
 		const actionSheet = await this.actionSheetController.create({
 			header: 'Publicación',
@@ -80,7 +100,7 @@ export class MisPublicacionesPage implements OnInit {
 					role: 'destructive',
 					icon: 'trash',
 					handler: () => {
-						this.deletePublicacion(publicacion.idpublicacion);
+						this.deletePublicacionAlert(publicacion.idpublicacion);
 					},
 				},
 				{

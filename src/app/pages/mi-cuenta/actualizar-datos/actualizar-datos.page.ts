@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
@@ -28,6 +29,7 @@ export class ActualizarDatosPage implements OnInit {
 
 	constructor(
 		private router: Router,
+		private alertController: AlertController,
 		private apiService: ApiService,
 		private toastService: ToastService
 	) {}
@@ -74,6 +76,7 @@ export class ActualizarDatosPage implements OnInit {
 				if (response.estado === true) {
 					this.toastService.successToast(response.message);
 					this.router.navigate(['/app/home/mi-cuenta']);
+					this.resetFormPassword();
 				}
 				if (response.estado === false) {
 					this.toastService.errorToast(response.message);
@@ -83,5 +86,50 @@ export class ActualizarDatosPage implements OnInit {
 				this.toastService.errorToast(error.error.message);
 			}
 		);
+	}
+
+	async updateDatosAlert(form) {
+		const alert = await this.alertController.create({
+			header: 'Actualizar datos',
+			message: '¿Desea actualizar los datos?',
+			buttons: [
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+				},
+				{
+					text: 'Ok',
+					handler: () => {
+						this.updateDatos(form);
+					},
+				},
+			],
+		});
+		await alert.present();
+	}
+
+	async updatePasswordAlert(form) {
+		const alert = await this.alertController.create({
+			header: 'Actualizar contraseña',
+			message: '¿Desea cambiar la contraseña?',
+			buttons: [
+				{
+					text: 'Cancelar',
+					role: 'cancel',
+				},
+				{
+					text: 'Ok',
+					handler: () => {
+						this.updatePassword(form);
+					},
+				},
+			],
+		});
+		await alert.present();
+	}
+
+	resetFormPassword() {
+		this.password.contrasenaActual = '';
+		this.password.contrasenaNueva = '';
 	}
 }
